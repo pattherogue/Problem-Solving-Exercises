@@ -1,3 +1,28 @@
 // add whatever parameters you deem necessary
-function sameFrequency() {
+function sameFrequency(num1, num2) {
+    const frequencyCounter1 = {};
+    const frequencyCounter2 = {};
+
+    const strNum1 = num1.toString();
+    const strNum2 = num2.toString();
+
+    if (strNum1.length !== strNum2.length) {
+        return false;
+    }
+
+    for (let digit of strNum1) {
+        frequencyCounter1[digit] = (frequencyCounter1[digit] || 0) + 1;
+    }
+
+    for (let digit of strNum2) {
+        frequencyCounter2[digit] = (frequencyCounter2[digit] || 0) + 1;
+    }
+
+    for (let key in frequencyCounter1) {
+        if (frequencyCounter1[key] !== frequencyCounter2[key]) {
+            return false;
+        }
+    }
+
+    return true;
 }
